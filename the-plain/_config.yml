@@ -1,7 +1,7 @@
 # Site Info
-title:              "The Plain"
-description:        "A minimalist Jekyll theme"
-author_name:        "作者" # change this to your name
+title:              "Seong's Blog"
+description:        "随笔杂文博客"
+author_name:        "Chin Seong" # change this to your name
 logo_url:           https://pic4.zhimg.com/v2-5de01f2fc043919b0b2800ffd2847f88_xl.jpg # Get it from GitHub API: https://api.github.com/users/<username>
 
 # Site Settings
