@@ -2,27 +2,51 @@
 layout: default
 ---
 
-<article>
+<article class="posts">
+  <h1>{{ page.title }}</h1>
 
-	<div class="center">
-		<h1 class="title">{{ page.title }}</h1>
-		<time class="code">{{ page.date | date: '%B %-d, %Y' }}</time>
-	</div>
+  <div clsss="meta">
+    <span class="author">
+      {{ page.author }}
+    </span>
 
-	<div class="divider"></div>
+    <span class="date">
+      {{ page.date | date: "%Y-%m-%d" }}
+    </span>
 
-	{{ content }}
+    <ul class="tag">
+      {% for tag in page.tags %}
+      <li>
+        <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
+          {{ tag }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 
+  <div class="entry">
+    {{ content }}
+  </div>
+
+  {% include disqus.html %}
+  {% include utteranc.html %}
+  {% include gitalk.html %}
 </article>
 
-<div class="page-navigation code">
-	{% if page.next.url %}
-    <a class="next" href="{{ page.next.url | prepend: site.baseurl | prepend: site.url }}" title="NEXT: {{page.next.title}}">&lt;&lt;</a>
-		<span> &middot; </span>
-  {% endif %}
-		<a class="home" href="{{ "/" | prepend: site.baseurl | prepend: site.url }}" title="Back to Index">Index</a>
+<div class="pagination">
   {% if page.previous.url %}
-		<span> &middot; </span>
-    <a class="prev" href="{{ page.previous.url | prepend: site.baseurl | prepend: site.url }}" title="PREV: {{page.previous.title}}">&gt;&gt;</a>
+    <span class="prev" >
+      <a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}">
+        ← 上一篇
+      </a>
+    </span>
+  {% endif %}
+  {% if page.next.url %}
+    <span class="next" >
+      <a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}">
+        下一篇 →
+      </a>
+    </span>
   {% endif %}
 </div>
